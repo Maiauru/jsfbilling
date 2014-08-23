@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>#{main['application.title']}</title>
+	<link href="#{request.contextPath}/css/main.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div id="container">
+		<div id="header">
+			<ui:insert name="header">
+				<h1>Добро пожаловать!</h1>
+			</ui:insert>
+		</div>
+
+		<div id="content">
+			<ui:insert name="content">
+				Приветствуем вас на главной странице тестового приложения
+			</ui:insert>
+		</div>
+
+		<div id="footer">
+			<ui:insert name="footer">
+				<hr/>
+				&#169; 2014 Воронин Леонид
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>
