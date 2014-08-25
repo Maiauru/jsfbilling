@@ -5,7 +5,6 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
-import ru.gooamoko.dao.HibernateProvider;
 import ru.gooamoko.dao.HostDao;
 import ru.gooamoko.model.Host;
 
@@ -14,7 +13,7 @@ public class ClientUtils {
 	private HostDao hostDao;
 
 	public ClientUtils() {
-		hostDao = new HostDao(HibernateProvider.getSessionFactory());
+		hostDao = new HostDao();
 	}
 	
 	public String getClientAddress() {

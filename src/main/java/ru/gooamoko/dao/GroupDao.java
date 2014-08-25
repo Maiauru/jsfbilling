@@ -4,27 +4,26 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import ru.gooamoko.model.Host;
+import ru.gooamoko.model.Group;
 
-public class HostDao extends GenericDao {
-
+public class GroupDao extends GenericDao {
 	@SuppressWarnings("unchecked")
-	public List<Host> fetchAll() {
+	public List<Group> fetchAll() {
 		begin();
-		List<Host> list = session.createQuery("from Host").list();
+		List<Group> list = session.createQuery("from Group").list();
 		commit();
 		return list;
 	}
 
-	public Host get(int id) throws DaoException {
+	public Group get(int id) throws DaoException {
 		try {
-			Host result = null;
+			Group result = null;
 			begin();
-			Query query = session.createQuery("from Host where hst_pcode=:id")
+			Query query = session.createQuery("from Host where grp_pcode=:id")
 					.setInteger("id", id);
-			result = (Host) query.uniqueResult();
+			result = (Group) query.uniqueResult();
 			if ((null == result)) {
-				throw new DaoException("Host with identifier " + id
+				throw new DaoException("Group with identifier " + id
 						+ " not found!");
 			}
 			commit();
@@ -36,16 +35,16 @@ public class HostDao extends GenericDao {
 		}
 	}
 
-	public void save(Host item) {
+	public void save(Group item) {
 		begin();
 		session.save(item);
 		commit();
 	}
 
-	public void delete(Host item) {
+	public void delete(Group item) {
 		begin();
 		session.delete(item);
 		commit();
 	}
-
+	
 }

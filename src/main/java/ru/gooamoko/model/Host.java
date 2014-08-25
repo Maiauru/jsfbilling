@@ -14,28 +14,28 @@ public class Host {
 	@Id
 	@Column(name="hst_pcode")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int id;
+	private int id;
 	
 	@Column(name="hst_description", length=50, nullable=false)
-	public String description;
+	private String description;
 	
 	@Column(name="hst_net", nullable=false)
-	public short net;
+	private short net;
 	
 	@Column(name="hst_addr", nullable=false)
-	public short addr;
+	private short addr;
 	
 	@Column(name="hst_ballance", nullable=false, columnDefinition="numeric(11,2) NOT NULL DEFAULT 0")
-	public float ballance;
+	private float ballance;
 	
 	@Column(name="hst_price", nullable=false, columnDefinition="numeric(5,2) NOT NULL DEFAULT 0")
-	public float price;
+	private float price;
 	
 	@Column(name="hst_enabled", nullable=false, columnDefinition="boolean NOT NULL DEFAULT false")
-	public boolean enabled;
+	private boolean enabled;
 	
 	@Column(name="hst_still", nullable=false, columnDefinition="boolean NOT NULL DEFAULT false")
-	public boolean steel;
+	private boolean steel;
 
 	public int getId() {
 		return id;

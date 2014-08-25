@@ -19,6 +19,7 @@
 
 		<!-- Mapping classes -->
 		<mapping class="ru.gooamoko.model.Host" />
+		<mapping class="ru.gooamoko.model.Group" />
 		
 	</session-factory>
 </hibernate-configuration>
