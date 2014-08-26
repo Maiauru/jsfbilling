@@ -2,15 +2,13 @@ package ru.gooamoko.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 @Entity
@@ -25,10 +23,10 @@ public class Group {
 	@Column(name="grp_name", nullable=false, length=50)
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	@OrderBy("hst_description")
+	@OneToMany
+    @JoinColumn(name="hst_grpcode")
 	private List<Host> hosts;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -48,8 +46,8 @@ public class Group {
 	public List<Host> getHosts() {
 		return hosts;
 	}
-	
-	public void addHost(Host h) {
-		hosts.add(h);
+
+	public void setHosts(List<Host> hosts) {
+		this.hosts = hosts;
 	}
 }

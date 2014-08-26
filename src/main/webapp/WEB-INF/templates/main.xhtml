@@ -11,23 +11,19 @@
 </h:head>
 <h:body>
 	<div id="container">
-		<div id="header">
-			<ui:insert name="header">
-				<h1>Добро пожаловать!</h1>
-			</ui:insert>
+		<div id="menu">
+			<!-- Menu, etc -->
+			<h:link value="Группы" outcome="/admin/groups" />
 		</div>
-
 		<div id="content">
 			<ui:insert name="content">
 				Приветствуем вас на главной странице тестового приложения
 			</ui:insert>
 		</div>
-
 		<div id="footer">
-			<ui:insert name="footer">
 				<hr/>
 				&#169; 2014 Воронин Леонид
-			</ui:insert>
+			<!-- Add menu, navigation, etc -->
 		</div>
 	</div>
 </h:body>

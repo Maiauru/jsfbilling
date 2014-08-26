@@ -6,13 +6,13 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <ui:composition template="/WEB-INF/templates/main.xhtml">
-	<ui:define name="header">
-		<h1>Информация для клиента</h1>
-	</ui:define>
 	<ui:define name="content">
-		<!-- Тут будет находиться основная страница -->
+		<h1>Информация для клиента</h1>
 		<p align="justify">Балланс компьютера с IP-адресом
-			#{clientUtils.getClientAddress()} на данный момент неизвестен.</p>
+			#{clientUtils.getClientAddress()} на данный момент неизвестен.
+		</p>
+
+<!-- 
 		<h:dataTable value="#{clientUtils.getHosts()}" var="h">
 			<h:column>
 				<f:facet name="net">
@@ -33,6 +33,7 @@
     				#{h.description}
     		</h:column>
 		</h:dataTable>
+ -->
 
 	</ui:define>
 </ui:composition>

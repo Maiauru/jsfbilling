@@ -19,7 +19,7 @@ public class GroupDao extends GenericDao {
 		try {
 			Group result = null;
 			begin();
-			Query query = session.createQuery("from Host where grp_pcode=:id")
+			Query query = session.createQuery("from Group where grp_pcode=:id")
 					.setInteger("id", id);
 			result = (Group) query.uniqueResult();
 			if ((null == result)) {

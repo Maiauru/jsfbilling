@@ -19,7 +19,7 @@ public class Host {
 	private int id;
 	
 	@ManyToOne
-	@JoinColumn(name="hst_grpcode")
+    @JoinColumn(name="hst_grpcode", insertable=false, updatable=false)
 	private Group group;
 	
 	@Column(name="hst_description", length=50, nullable=false)
