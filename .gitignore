@@ -1,1 +1,9 @@
 /target/
+/.settings/
+/.metadata/
+/.metadata/src/
+/.metadata/src/main/
+/.metadata/src/main/webapp/
+/.metadata/src/main/webapp/WEB-INF/
+.classpath
+nb-configuration.xml
