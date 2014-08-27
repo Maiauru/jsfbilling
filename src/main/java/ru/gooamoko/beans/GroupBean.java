@@ -1,14 +1,14 @@
 package ru.gooamoko.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
-import ru.gooamoko.dao.DaoException;
 import ru.gooamoko.dao.GroupDao;
 import ru.gooamoko.model.Group;
 
-public class GroupBean {
-	private GroupDao groupDao = null;
-	private Group group = null;
+public class GroupBean implements Serializable {
+  private transient GroupDao groupDao = null;
+	private transient Group item = null;
 	private boolean edit = false;
 	private boolean delete = false;
 	private String errorMessage = null;
@@ -24,12 +24,12 @@ public class GroupBean {
 		groupDao = new GroupDao();
 	}
 	
-	public void edit(int groupId) {
+	public void edit(Group item) {
 		try {
 			resetFlags();
 			edit = true;
-			group = groupDao.get(groupId);
-		} catch (DaoException e) {
+			this.item = item;
+		} catch (Exception e) {
 			error = true;
 			errorMessage = e.getMessage();
 		}
@@ -39,12 +39,12 @@ public class GroupBean {
 		return groupDao.fetchAll();
 	}
 	
-	public void confirm(int groupId) {
+	public void confirmDelete(Group item) {
 		try {
 			resetFlags();
 			delete = true;
-			group = groupDao.get(groupId);
-		} catch (DaoException e) {
+			this.item = item;
+		} catch (Exception e) {
 			error = true;
 			errorMessage = e.getMessage();
 		}	
@@ -53,7 +53,7 @@ public class GroupBean {
 	public void delete() {
 		try {
 			resetFlags();
-			groupDao.delete(group);
+			groupDao.delete(item);
 		} catch (Exception e) {
 			error = true;
 			errorMessage = e.getMessage();
@@ -63,7 +63,7 @@ public class GroupBean {
 	public void save() {
 		try {
 			resetFlags();
-			groupDao.save(group);
+			groupDao.save(item);
 		} catch (Exception e) {
 			error = true;
 			errorMessage = e.getMessage();
@@ -73,11 +73,15 @@ public class GroupBean {
 	public void add() {
 		resetFlags();
 		edit = true;
-		group = new Group();
+		item = new Group();
 	}
+  
+  public void cancel() {
+    resetFlags();
+  }
 
-	public Group getGroup() {
-		return group;
+	public Group getItem() {
+		return item;
 	}
 
 	public boolean isEdit() {
@@ -96,7 +100,7 @@ public class GroupBean {
 		return error;
 	}
 	
-	public boolean isList() {
+	public boolean isShow() {
 		return !edit && !delete;
 	}
 }
