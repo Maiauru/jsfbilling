@@ -43,6 +43,18 @@
           </div>
         </h:form>
       </h:panelGroup>
+      <h:panelGroup layout="block" rendered="#{groupBean.delete}">
+        <h1>Удаление группы</h1>
+        <h:form>
+            <p>
+                Группа "#{groupBean.item.name}" Будет удалена!
+            </p>
+          <div id="buttons">
+            <h:commandButton value="Удалить" action="#{groupBean.delete()}" />
+            <h:commandButton value="Отменить" action="#{groupBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
     </ui:define>
   </ui:composition>
 </html>
