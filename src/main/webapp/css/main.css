@@ -92,7 +92,7 @@ input[type="button"],input[type="submit"],button,.button,a.button:link,a.button:
   background-color: #174c89;
   color: #d5d5d5;
   border: 1px solid #073c79;
-  border-radius: 5px;
+//  border-radius: 5px;
   text-decoration: none;
 }
 
@@ -119,13 +119,19 @@ a.action {
 	cursor: pointer;
 }
 
-table#listForm:dataTable tbody tr:hover {
+table {
+  width: 100%;
+}
+
+tbody tr:hover {
 	background-color: #efeee0;
 }
 
-td.title {
-	font-weight: bold;
-	text-align: left;
+thead th {
 	font-family: verdana, tahoma, arial;
-	color: #761606;
+	font-weight: bold;
+  font-size: 16px;
+	text-align: center;
+  background: #dfded0;
+	color: #505050;
 } 
