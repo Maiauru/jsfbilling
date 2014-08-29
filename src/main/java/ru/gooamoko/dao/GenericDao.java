@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class GenericDao {
 
-	private SessionFactory factory;
+	private final SessionFactory factory;
 	protected Session session;
 
 	protected void begin() {

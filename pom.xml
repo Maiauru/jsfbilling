@@ -40,13 +40,13 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.2.8</version>
+			<version>2.2.6</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.2.8</version>
+			<version>2.2.6</version>
 		</dependency>
 
 		<dependency>
@@ -65,12 +65,14 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>4.3.6.Final</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.2-1003-jdbc4</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/jsfbilling"/>
+<Context antiJARLocking="true" path="/jsfbilling">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" 
+            maxActive="50" maxIdle="5" maxWait="-1" name="jdbc/netstat" 
+             username="netstat" password="netstat" type="javax.sql.DataSource" 
+            url="jdbc:postgresql://127.0.0.1:5432/netstat"/>
+</Context>

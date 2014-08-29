@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+    <!-- using Tomcat connections 
+    <property name="connection.datasource">java:/comp/env/jdbc/netstat</property>
+    -->    
+    <!-- Parameters for Hibernate connection provider -->
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <property name="connection.url">jdbc:postgresql://localhost:5432/netstat</property>
+    <property name="connection.username">netstat</property>
+    <property name="connection.password">netstat</property>
+    <!-- -->
+
+    <!-- built-in JDBC connection pool -->
+    <property name="connection.pool_size">1</property>
+
+    <!-- configuration pool via c3p0 -->
+    <!--
+    <property name="c3p0.min_size">5</property>
+    <property name="c3p0.max_size">100</property>
+    <property name="c3p0.max_statements">200</property>
+    <property name="c3p0.timeout">600</property>
+    -->
+
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    
+    <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <!-- Mapping classes -->
+    <mapping class="ru.gooamoko.model.Group" />
+    <mapping class="ru.gooamoko.model.Host" />
+    <mapping class="ru.gooamoko.model.Traffic" />
+    <mapping class="ru.gooamoko.model.DailyTraffic" />
+
+  </session-factory>
+</hibernate-configuration>
