@@ -46,9 +46,8 @@
       <h:panelGroup layout="block" rendered="#{groupBean.delete}">
         <h1>Удаление группы</h1>
         <h:form>
-            <p>
-                Группа "#{groupBean.item.name}" Будет удалена!
-            </p>
+            <p>Группа "#{groupBean.item.name}" Будет удалена.</p>
+            <p>#{main['application.delete.warning']}</p>
           <div id="buttons">
             <h:commandButton value="Удалить" action="#{groupBean.delete()}" />
             <h:commandButton value="Отменить" action="#{groupBean.cancel()}" />
