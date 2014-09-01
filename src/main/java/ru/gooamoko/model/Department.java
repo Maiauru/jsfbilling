@@ -1,9 +1,11 @@
 package ru.gooamoko.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="groups")
-public class Group {
+public class Department implements Serializable {
 	
 	@Id
 	@Column(name="grp_pcode")
@@ -23,7 +25,7 @@ public class Group {
 	@Column(name="grp_name", nullable=false, length=50)
 	private String name;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="hst_grpcode")
 	private List<Host> hosts;
 	

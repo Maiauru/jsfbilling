@@ -1,5 +1,6 @@
 package ru.gooamoko.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="hosts")
-public class Host {
+public class Host implements Serializable {
 	
 	@Id
 	@Column(name="hst_pcode")
@@ -20,7 +21,7 @@ public class Host {
 	
 	@ManyToOne
     @JoinColumn(name="hst_grpcode", insertable=false, updatable=false)
-	private Group group;
+	private Department group;
 	
 	@Column(name="hst_description", length=50, nullable=false)
 	private String description;
@@ -51,11 +52,11 @@ public class Host {
 		this.id = id;
 	}
 
-	public Group getGroup() {
+	public Department getGroup() {
 		return group;
 	}
 
-	public void setGroup(Group group) {
+	public void setGroup(Department group) {
 		this.group = group;
 	}
 

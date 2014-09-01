@@ -33,7 +33,7 @@
     <property name="hibernate.show_sql">false</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <!-- Mapping classes -->
-    <mapping class="ru.gooamoko.model.Group" />
+    <mapping class="ru.gooamoko.model.Department" />
     <mapping class="ru.gooamoko.model.Host" />
     <mapping class="ru.gooamoko.model.Traffic" />
     <mapping class="ru.gooamoko.model.DailyTraffic" />

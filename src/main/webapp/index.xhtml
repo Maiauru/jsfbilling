@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="/WEB-INF/templates/main.xhtml">
 	<ui:define name="content">
@@ -11,30 +9,6 @@
 		<p align="justify">Балланс компьютера с IP-адресом
 			#{clientUtils.getClientAddress()} на данный момент неизвестен.
 		</p>
-
-<!-- 
-		<h:dataTable value="#{clientUtils.getHosts()}" var="h">
-			<h:column>
-				<f:facet name="net">
-    				Network
-    			</f:facet>
-    				#{h.net}
-   		</h:column>
-			<h:column>
-				<f:facet name="host">
-    				Address
-				</f:facet>
-    				#{h.addr}
-   		</h:column>
-			<h:column>
-				<f:facet name="description">
-    				Description
-				</f:facet>
-    				#{h.description}
-    		</h:column>
-		</h:dataTable>
- -->
-
 	</ui:define>
 </ui:composition>
 </html>

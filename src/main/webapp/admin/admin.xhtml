@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+  <ui:composition template="/WEB-INF/templates/main.xhtml">
+    <ui:define name="content">
+      <h:panelGroup layout="block" rendered="#{adminBean.show}">
+        <h1>Группы</h1>
+        <h:form id="listForm" rendered="#{not empty adminBean.groups}">
+          <ui:repeat value="#{adminBean.groups}" var="group">
+            <div id="group_#{group.id}" class="panel">
+              <table width="100%">
+                <tbody>
+                  <tr>
+                    <td width="70%"><h2>#{group.name}</h2></td>
+                    <td width="30%">
+                      <h:commandButton value="Изменить" action="#{adminBean.editGroup(group)}" />
+                      <h:commandButton value="Удалить" action="#{adminBean.confirmDeleteGroup(group)}" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table id="dataTable">
+                <thead>
+                  <tr>
+                    <th width="70%">Описание</th>
+                    <th width="30%">Действия</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ui:repeat value="#{group.hosts}" var="host">
+                    <tr>
+                      <td>
+                        #{host.description}
+                      </td>
+                      <td>
+                        <h:commandLink class="action" value="Изменить" action="#{adminBean.editHost(host)}" />
+                        <h:commandLink class="action" value="Удалить" action="#{adminBean.confirmDeleteHost(host)}" />
+                      </td>
+                    </tr>
+                  </ui:repeat>
+                </tbody>
+              </table>
+            </div>
+          </ui:repeat>
+        </h:form>
+        <h:panelGroup rendered="#{empty groupBean.list}">
+          <p>На данный момент нет ни одной записи.</p>
+        </h:panelGroup>
+        <h:form>
+          <center><p><h:commandButton value="Добавить" action="#{groupBean.add()}" /></p></center>
+        </h:form>
+      </h:panelGroup>
+      <h:panelGroup layout="block" rendered="#{groupBean.edit}">
+        <h1>Параметры группы</h1>
+        <h:form>
+          <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
+            <h:outputText value="Наименование" />
+            <h:inputText value="#{groupBean.item.name}" class="textEdit" />
+          </h:panelGrid>
+          <div id="buttons">
+            <h:commandButton value="Сохранить" action="#{groupBean.save()}" />
+            <h:commandButton value="Отменить" action="#{groupBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+      <h:panelGroup layout="block" rendered="#{groupBean.delete}">
+        <h1>Удаление группы</h1>
+        <h:form>
+          <p>Группа "#{groupBean.item.name}" Будет удалена.</p>
+          <p>#{main['application.delete.warning']}</p>
+          <div id="buttons">
+            <h:commandButton value="Удалить" action="#{groupBean.delete()}" />
+            <h:commandButton value="Отменить" action="#{groupBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+    </ui:define>
+  </ui:composition>
+</html>

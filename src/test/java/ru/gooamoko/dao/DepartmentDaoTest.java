@@ -10,14 +10,14 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ru.gooamoko.model.Group;
+import ru.gooamoko.model.Department;
 
-public class GroupDaoTest {
-	private static GroupDao dao;
+public class DepartmentDaoTest {
+	private static DepartmentDao dao;
 
 	@BeforeClass
 	public static void initDao() {
-		dao = new GroupDao();
+		dao = new DepartmentDao();
 	}
 
 	@AfterClass
@@ -29,10 +29,10 @@ public class GroupDaoTest {
 	public void testFetchAll() {
 		System.out.println("======> testFetchAll()");
 		try {
-			List<Group> list = dao.fetchAll();
+			List<Department> list = dao.fetchAll();
 			assertNotNull(list);
 			// assertFalse(list.isEmpty());
-			for (Group g : list) {
+			for (Department g : list) {
 				assertNotNull(g);
 			}
 		} catch (Exception e) {
@@ -43,13 +43,13 @@ public class GroupDaoTest {
 	@Test
 	public void testDeleteWrong() {
 		System.out.println("======> testDeleteWrong()");
-		dao.delete(new Group());
+		dao.delete(new Department());
 	}
 
 	@Test(expected = DaoException.class)
 	public void testGetWrong() throws DaoException {
 		System.out.println("testGetWrong()");
-		Group g = dao.get(0);
+		Department g = dao.get(0);
 		assertNull(g);
 		fail("DaoException expected but not thrown");
 	}
@@ -58,8 +58,8 @@ public class GroupDaoTest {
 	public void testCreateSaveDelete() {
 		try {
 			System.out.println("======> testCreateSaveDelete()");
-			GroupDao gd = new GroupDao();
-			Group grp = new Group();
+			DepartmentDao gd = new DepartmentDao();
+			Department grp = new Department();
 			grp.setName("Test group");
 			gd.save(grp);
 			System.out.println("======> Group with id " + grp.getId() + " saved!");
