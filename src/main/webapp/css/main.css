@@ -10,14 +10,16 @@ body {
 h1,h2,h3,h4 {
   font-family: Arial, Verdana, Helvetica;
   color: #505050;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 28px;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 h3 {
@@ -31,7 +33,14 @@ h4 {
 p {
   font: 14px verdana, tahoma, arial;
   color: #04060c;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+}
+
+.groupHeader {
+  font-family: verdana, tahoma, arial;
+  font-size: 16px;
+  font-weight: bold;
+  color: #505050;
 }
 
 #container {
@@ -80,9 +89,10 @@ div#error {
   background-color: #f97979;
 }
 
-div#buttons {
+div.buttons {
   margin-top: 10px;
   margin-bottom: 20px;
+  margin-left: 50px;
 }
 
 .error {
@@ -90,21 +100,23 @@ div#buttons {
 }
 
 .info {
-  font-size: 12px;
+  font-size: 14px;
   color: #909090;
   text-decoration: none;
 }
 
 input[type="button"],input[type="submit"],button,.button,a.button:link,a.button:visited {
   cursor: pointer;
-  font-size: 100%;
+  font-size: 14px;
   font-family: Verdana, Helvetica, Arial, sans-serif;
   padding: .3em .6em;
+  margin-left: 5px;
+  margin-right: 5px;
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
   background-color: #174c89;
   color: #d5d5d5;
   border: 1px solid #073c79;
-  //  border-radius: 5px;
+  border-radius: 3px;
   text-decoration: none;
 }
 
@@ -141,8 +153,8 @@ table {
 
 #dataTable thead th {
   font-family: verdana, tahoma, arial;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: normal;
   text-align: center;
   background: #dfded0;
   color: #505050;
