@@ -37,7 +37,7 @@ public class DepartmentDao extends GenericDao {
 
 	public void save(Department item) {
 		begin();
-		session.save(item);
+		session.saveOrUpdate(item);
 		commit();
 	}
 
@@ -46,5 +46,9 @@ public class DepartmentDao extends GenericDao {
 		session.delete(item);
 		commit();
 	}
+  
+  public void setBallance(float ballance) {
+    // TODO добавить логики
+  }
 
 }

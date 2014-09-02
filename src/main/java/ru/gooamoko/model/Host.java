@@ -6,9 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name="hosts")
@@ -19,9 +18,8 @@ public class Host implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne
-    @JoinColumn(name="hst_grpcode", insertable=false, updatable=false)
-	private Department group;
+  @Column(name="hst_grpcode", nullable=false)
+	private int departmentId;
 	
 	@Column(name="hst_description", length=50, nullable=false)
 	private String description;
@@ -43,7 +41,19 @@ public class Host implements Serializable {
 	
 	@Column(name="hst_still", nullable=false, columnDefinition="boolean NOT NULL DEFAULT false")
 	private boolean steel;
-
+  
+  // Траффик за день
+//  @Formula("(select sum(t.stk_kbytes) from stack t where t.stk_hstcode = hst_pcode)")
+  @Formula("(select day_traffic(hst_pcode))")
+  private float dayKBytes;
+  // Траффик за месяц
+//  @Formula("(select sum(d.day_mbytes) from daily d "
+//          + "where (d.day_hstcode = hst_pcode) AND "
+//          + "(d.day_date >= CAST((EXTRACT(year FROM now()) || '-' || EXTRACT(month FROM now()) || '-' || '01') AS date))"
+//          + "AND (d.day_date < CAST((EXTRACT(year FROM now()) || '-' || EXTRACT(month FROM now()) + 1 || '-' || '01') AS date)))")
+  @Formula("(select month_traffic(hst_pcode))")
+  private float monthMBytes;
+  
 	public int getId() {
 		return id;
 	}
@@ -52,13 +62,13 @@ public class Host implements Serializable {
 		this.id = id;
 	}
 
-	public Department getGroup() {
-		return group;
-	}
+  public int getDepartmentId() {
+    return departmentId;
+  }
 
-	public void setGroup(Department group) {
-		this.group = group;
-	}
+  public void setDepartmentId(int departmentId) {
+    this.departmentId = departmentId;
+  }
 
 	public String getDescription() {
 		return description;
@@ -115,4 +125,12 @@ public class Host implements Serializable {
 	public void setSteel(boolean steel) {
 		this.steel = steel;
 	}
+
+  public float getDayKBytes() {
+    return dayKBytes;
+  }
+
+  public float getMonthMBytes() {
+    return monthMBytes;
+  }
 }

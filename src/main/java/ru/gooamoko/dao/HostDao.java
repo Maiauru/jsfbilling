@@ -67,5 +67,4 @@ public class HostDao extends GenericDao {
     session.delete(item);
     commit();
   }
-
 }

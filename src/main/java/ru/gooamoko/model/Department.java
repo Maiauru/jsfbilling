@@ -28,6 +28,9 @@ public class Department implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="hst_grpcode")
 	private List<Host> hosts;
+  
+  // Балланс группы
+  private transient float ballance = 0;
 	
 	public int getId() {
 		return id;
@@ -52,4 +55,12 @@ public class Department implements Serializable {
 	public void setHosts(List<Host> hosts) {
 		this.hosts = hosts;
 	}
+
+  public float getBallance() {
+    return ballance;
+  }
+
+  public void setBallance(float ballance) {
+    this.ballance = ballance;
+  }
 }

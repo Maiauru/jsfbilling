@@ -19,6 +19,8 @@ public class AdminBean implements Serializable {
 	private boolean deleteGroup = false;
   private boolean editHost = false;
 	private boolean deleteHost = false;
+  private boolean ballanceHost = false;
+  private boolean ballanceGroup = false;
 	private String errorMessage = null;
 	private boolean error = false;
 	
@@ -27,6 +29,8 @@ public class AdminBean implements Serializable {
     editHost = false;
 		deleteGroup = false;
     deleteHost = false;
+    ballanceGroup = false;
+    ballanceHost = false;
 		error = false;
 	}
   
@@ -55,6 +59,14 @@ public class AdminBean implements Serializable {
   public boolean isDeleteHost() {
     return deleteHost;
   }
+
+  public boolean isBallanceHost() {
+    return ballanceHost;
+  }
+
+  public boolean isBallanceGroup() {
+    return ballanceGroup;
+  }
   
   public boolean isEdit() {
     return editGroup || editHost;
@@ -63,9 +75,13 @@ public class AdminBean implements Serializable {
   public boolean isDelete() {
     return deleteGroup || deleteHost;
   }
+  
+  public boolean isBallance() {
+    return ballanceGroup || ballanceHost;
+  }
 
 	public boolean isShow() {
-		return !isEdit() && !isDelete();
+		return !isEdit() && !isDelete() && !isBallance();
 	}
 
   public boolean isError() {
@@ -134,6 +150,28 @@ public class AdminBean implements Serializable {
     resetFlags();
     hostDao.save(host);
   }
+  
+  public void ballanceGroup(Department item) {
+    resetFlags();
+    ballanceGroup = true;
+    group = item;
+  }
+  
+  public void ballanceHost(Host item) {
+    resetFlags();
+    ballanceHost = true;
+    host = item;
+  }
+  
+  public void setBallanceGroup() {
+    resetFlags();
+    departmentDao.setBallance(group.getBallance());
+  }
+  
+  public void setBallanceHost() {
+    resetFlags();
+    hostDao.save(host);
+  }
 	
 	public void addGroup() {
 		resetFlags();
@@ -146,7 +184,7 @@ public class AdminBean implements Serializable {
     group = item;
     editHost = true;
     host = new Host();
-    host.setGroup(group);
+    host.setDepartmentId(group.getId());
   }
   
 	public Department getGroup() {

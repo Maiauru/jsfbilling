@@ -6,6 +6,7 @@
 
   <ui:composition template="/WEB-INF/templates/main.xhtml">
     <ui:define name="content">
+      <!-- Отображение списка групп и узлов -->
       <h:panelGroup layout="block" rendered="#{adminBean.show}">
         <h1>Панель управления</h1>
         <h:form>
@@ -16,6 +17,8 @@
             <div id="group_#{group.id}" class="panel">
               <div class="groupHeader">#{group.name}
                 <h:commandButton value="Изменить" action="#{adminBean.editGroup(group)}" />
+                <h:commandButton value="Добавить узел" action="#{adminBean.addHost(group)}" />
+                <h:commandButton value="Балланс" action="#{adminBean.ballanceGroup(group)}" />
                 <h:commandButton value="Удалить" action="#{adminBean.confirmDeleteGroup(group)}" />
               </div>
               <table id="dataTable">
@@ -29,7 +32,7 @@
                   <ui:repeat value="#{group.hosts}" var="host">
                     <tr>
                       <td>
-                        #{host.description}
+                        #{host.description} (#{host.dayKBytes})
                       </td>
                       <td>
                         <h:commandLink class="action" value="Изменить" action="#{adminBean.editHost(host)}" />
@@ -49,8 +52,37 @@
           <div class="buttons"><h:commandButton value="Добавить группу" action="#{adminBean.addGroup()}" /></div>
         </h:form>
       </h:panelGroup>
+      <!-- Балланс группы -->
+      <h:panelGroup layout="block" rendered="#{adminBean.ballanceGroup}">
+        <h1>Балланс группы</h1>
+        <h:form>
+          <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
+            <h:outputText value="Новый балланс группы" />
+            <h:inputText value="#{adminBean.group.ballance}" class="textEdit" />
+          </h:panelGrid>
+          <div id="buttons">
+            <h:commandButton value="Сохранить" action="#{adminBean.setBallanceGroup()}" />
+            <h:commandButton value="Отменить" action="#{adminBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+      <!-- Балланс узла -->
+      <h:panelGroup layout="block" rendered="#{adminBean.ballanceHost}">
+        <h1>Балланс узла</h1>
+        <h:form>
+          <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
+            <h:outputText value="Новый балланс узла" />
+            <h:inputText value="#{adminBean.host.ballance}" class="textEdit" />
+          </h:panelGrid>
+          <div id="buttons">
+            <h:commandButton value="Сохранить" action="#{adminBean.setBallanceHost()}" />
+            <h:commandButton value="Отменить" action="#{adminBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+      <!-- Редактирование группы -->
       <h:panelGroup layout="block" rendered="#{adminBean.editGroup}">
-        <h1>Параметры группы</h1>
+        <h1>Параметры подразделения</h1>
         <h:form>
           <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
             <h:outputText value="Наименование" />
@@ -62,6 +94,29 @@
           </div>
         </h:form>
       </h:panelGroup>
+      <!-- Редактирование узла -->
+      <h:panelGroup layout="block" rendered="#{adminBean.editHost}">
+        <h1>Параметры компьютера</h1>
+        <h:form>
+          <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
+            <h:outputText value="Сеть" />
+            <h:inputText value="#{adminBean.host.net}" class="textEdit" />
+            <h:outputText value="Адрес" />
+            <h:inputText value="#{adminBean.host.addr}" class="textEdit" />
+            <h:outputText value="Описание" />
+            <h:inputText value="#{adminBean.host.description}" class="textEdit" />
+            <h:outputText value="Балланс" />
+            <h:inputText value="#{adminBean.host.ballance}" class="textEdit" />
+            <h:outputText value="Стоимость 1 Мб" />
+            <h:inputText value="#{adminBean.host.price}" class="textEdit" />
+          </h:panelGrid>
+          <div id="buttons">
+            <h:commandButton value="Сохранить" action="#{adminBean.saveHost()}" />
+            <h:commandButton value="Отменить" action="#{adminBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+      <!-- Удаление -->
       <h:panelGroup layout="block" rendered="#{adminBean.deleteGroup}">
         <h1>Удаление группы</h1>
         <h:form>
