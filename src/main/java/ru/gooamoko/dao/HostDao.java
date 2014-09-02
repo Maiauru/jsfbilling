@@ -58,7 +58,7 @@ public class HostDao extends GenericDao {
 
   public void save(Host item) {
     begin();
-    session.save(item);
+    session.saveOrUpdate(item);
     commit();
   }
 

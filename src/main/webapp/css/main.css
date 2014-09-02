@@ -139,6 +139,9 @@ a:hover {
 }
 
 a.action {
+  font-size: 14px;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  text-decoration: none;
   margin-left: 10px;
   cursor: pointer;
 }
@@ -148,7 +151,7 @@ table {
 }
 
 #dataTable tbody tr:hover {
-  background-color: #efeee0;
+  background-color: #ffffff;
 }
 
 #dataTable thead th {

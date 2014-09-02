@@ -43,14 +43,9 @@ public class Host implements Serializable {
 	private boolean steel;
   
   // Траффик за день
-//  @Formula("(select sum(t.stk_kbytes) from stack t where t.stk_hstcode = hst_pcode)")
   @Formula("(select day_traffic(hst_pcode))")
   private float dayKBytes;
   // Траффик за месяц
-//  @Formula("(select sum(d.day_mbytes) from daily d "
-//          + "where (d.day_hstcode = hst_pcode) AND "
-//          + "(d.day_date >= CAST((EXTRACT(year FROM now()) || '-' || EXTRACT(month FROM now()) || '-' || '01') AS date))"
-//          + "AND (d.day_date < CAST((EXTRACT(year FROM now()) || '-' || EXTRACT(month FROM now()) + 1 || '-' || '01') AS date)))")
   @Formula("(select month_traffic(hst_pcode))")
   private float monthMBytes;
   
@@ -132,5 +127,13 @@ public class Host implements Serializable {
 
   public float getMonthMBytes() {
     return monthMBytes;
+  }
+  
+  public String getIpAddress() {
+    return "192.168." + net + "." + addr;
+  }
+  
+  public String getStatus() {
+    return (enabled)? "+" : "-";
   }
 }
