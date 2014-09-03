@@ -1,14 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-<ui:composition template="/WEB-INF/templates/main.xhtml">
-	<ui:define name="content">
-		<h1>Информация для клиента</h1>
-		<p align="justify">Балланс компьютера с IP-адресом
-			#{clientUtils.getClientAddress()} на данный момент неизвестен.
-		</p>
-	</ui:define>
-</ui:composition>
+  <ui:composition template="/WEB-INF/templates/main.xhtml">
+    <ui:define name="content">
+      <h1>Информация для клиента</h1>
+      <h:panelGroup rendered="#{clientUtils.unknown}">
+        <p align="justify">
+          Информация по вашему компьютеру не обнаружена.<br /> 
+          Это возможно по ряду причин:
+          <ul>
+            <li>отсутствие вашего компьютера в базе данных;</li>
+            <li>неподходящий IP-адрес (например, 127.0.0.1);</li>
+            <li>использование протокола TCP/IP версии 6.</li>
+          </ul>
+          В общем, в любом случае, обратитесь к вашему системному администратору, 
+          либо к разработчику информационной системы и сообщите ему, что у вас 
+          не отображается информация о портебляемом трафике.<br />
+          Адрес вашего компьютера определился как #{clientUtils.clientAddress}.
+          Сообщите эту информацию системному администратору или 
+          разработчику информационной системы.
+        </p>
+      </h:panelGroup>
+      <h:panelGroup rendered="#{!clientUtils.unknown}">
+        <p align="justify">Балланс компьютера с IP-адресом
+          #{clientUtils.getClientAddress()} на данный момент составляет #{clientUtils.clientHost.ballance}.<br />
+          Трафик за сегодня: #{clientUtils.clientHost.dayKBytes} КБайт.<br />
+          Трафик за текущий месяц: #{clientUtils.clientHost.monthMBytes} МБайт.<br />
+        </p>
+      </h:panelGroup>
+    </ui:define>
+  </ui:composition>
 </html>

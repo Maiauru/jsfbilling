@@ -22,7 +22,7 @@ public class HostDao extends GenericDao {
     try {
       begin();
       Query query = session.createQuery("from Host where hst_grpcode=:grp")
-              .setInteger("grp", grp.getId());
+          .setInteger("grp", grp.getId());
       List<Host> result = query.list();
       if (null == result) {
         result = new ArrayList<>();
@@ -32,7 +32,7 @@ public class HostDao extends GenericDao {
     } catch (Exception e) {
       rollback();
       throw new DaoException("Exception " + e.getClass().getName()
-              + " thrown with message " + e.getMessage());
+          + " thrown with message " + e.getMessage());
     }
   }
 
@@ -41,18 +41,39 @@ public class HostDao extends GenericDao {
       Host result;
       begin();
       Query query = session.createQuery("from Host where hst_pcode=:id")
-              .setInteger("id", id);
+          .setInteger("id", id);
       result = (Host) query.uniqueResult();
       if (null == result) {
         throw new DaoException("Host with identifier " + id
-                + " not found!");
+            + " not found!");
       }
       commit();
       return result;
     } catch (Exception e) {
       rollback();
       throw new DaoException("Exception " + e.getClass().getName()
-              + " thrown with message " + e.getMessage());
+          + " thrown with message " + e.getMessage());
+    }
+  }
+
+  public Host get(int net, int addr) throws DaoException {
+    try {
+      Host result;
+      begin();
+      Query query = session.createQuery("from Host where (hst_net=:net) and (hst_addr=:addr)")
+          .setInteger("net", net)
+          .setInteger("addr", addr);
+      result = (Host) query.uniqueResult();
+      if (null == result) {
+        throw new DaoException("Host with IP 192.168." + net + "." + addr
+            + " not found!");
+      }
+      commit();
+      return result;
+    } catch (Exception e) {
+      rollback();
+      throw new DaoException("Exception " + e.getClass().getName()
+          + " thrown with message " + e.getMessage());
     }
   }
 
