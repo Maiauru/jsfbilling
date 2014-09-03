@@ -99,9 +99,15 @@ div.buttons {
   color: #d95959;
 }
 
-.info {
+.info, .disabled {
   font-size: 14px;
   color: #909090;
+  text-decoration: none;
+}
+
+.enabled {
+  font-size: 14px;
+  color: #04060c;
   text-decoration: none;
 }
 

@@ -134,6 +134,6 @@ public class Host implements Serializable {
   }
   
   public String getStatus() {
-    return (enabled)? "+" : "-";
+    return (enabled)? "enabled" : "disabled";
   }
 }

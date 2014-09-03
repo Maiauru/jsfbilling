@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
   <ui:composition template="/WEB-INF/templates/main.xhtml">
     <ui:define name="content">
@@ -24,7 +25,6 @@
               <table id="dataTable">
                 <thead>
                   <tr>
-                    <th width="20px">?</th>
                     <th width="20%">IP-адрес</th>
                     <th width="30%">Описание</th>
                     <th width="10%">За день</th>
@@ -35,10 +35,7 @@
                 </thead>
                 <tbody>
                   <ui:repeat value="#{group.hosts}" var="host">
-                    <tr>
-                      <td>
-                        #{host.status}
-                      </td>
+                    <tr class="#{host.status}">
                       <td>
                         #{host.ipAddress}
                       </td>
