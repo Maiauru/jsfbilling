@@ -5,26 +5,13 @@
 <hibernate-configuration>
   <session-factory>
     <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
-    <!-- using Tomcat connections 
-    <property name="connection.datasource">java:/comp/env/jdbc/netstat</property>
-    -->    
     <!-- Parameters for Hibernate connection provider -->
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="connection.url">jdbc:postgresql://localhost:5432/netstat</property>
     <property name="connection.username">netstat</property>
     <property name="connection.password">netstat</property>
-    <!-- -->
-
     <!-- built-in JDBC connection pool -->
     <property name="connection.pool_size">1</property>
-
-    <!-- configuration pool via c3p0 -->
-    <!--
-    <property name="c3p0.min_size">5</property>
-    <property name="c3p0.max_size">100</property>
-    <property name="c3p0.max_statements">200</property>
-    <property name="c3p0.timeout">600</property>
-    -->
 
     <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
     
