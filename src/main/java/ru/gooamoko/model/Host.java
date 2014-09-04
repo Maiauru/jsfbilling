@@ -18,7 +18,7 @@ public class Host implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-  @Column(name="hst_grpcode", nullable=false)
+  @Column(name="hst_depcode", nullable=false)
 	private int departmentId;
 	
 	@Column(name="hst_description", length=50, nullable=false)
@@ -42,12 +42,16 @@ public class Host implements Serializable {
 	@Column(name="hst_still", nullable=false, columnDefinition="boolean NOT NULL DEFAULT false")
 	private boolean steel;
   
-  // Траффик за день
+  // Трафик за день
   @Formula("(select day_traffic(hst_pcode))")
   private float dayKBytes;
-  // Траффик за месяц
+  // Трафик за месяц
   @Formula("(select month_traffic(hst_pcode))")
   private float monthMBytes;
+  
+  // Скорость в килобайтах в минуту
+  @Formula("(select get_speed(hst_pcode))")
+  private float speed;
   
 	public int getId() {
 		return id;
@@ -127,6 +131,10 @@ public class Host implements Serializable {
 
   public float getMonthMBytes() {
     return monthMBytes;
+  }
+
+  public float getSpeed() {
+    return speed;
   }
   
   public String getIpAddress() {

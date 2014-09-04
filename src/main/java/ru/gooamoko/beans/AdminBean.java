@@ -165,7 +165,7 @@ public class AdminBean implements Serializable {
   
   public void setBallanceGroup() {
     resetFlags();
-    departmentDao.setBallance(group.getBallance());
+    departmentDao.setBallance(group, group.getBallance());
   }
   
   public void setBallanceHost() {

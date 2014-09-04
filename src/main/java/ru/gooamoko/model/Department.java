@@ -14,19 +14,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="groups")
+@Table(name="departments")
 public class Department implements Serializable {
 	
 	@Id
-	@Column(name="grp_pcode")
+	@Column(name="dep_pcode")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="grp_name", nullable=false, length=50)
+	@Column(name="dep_name", nullable=false, length=50)
 	private String name;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="hst_grpcode")
+    @JoinColumn(name="hst_depcode")
 	private List<Host> hosts;
   
   // Балланс группы
