@@ -18,6 +18,7 @@
   <managed-bean>
     <managed-bean-name>adminBean</managed-bean-name>
     <managed-bean-class>ru.gooamoko.beans.AdminBean</managed-bean-class>
-    <managed-bean-scope>view</managed-bean-scope></managed-bean>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
 </faces-config>
         

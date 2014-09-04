@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 public class GenericDao {
 
-	private final SessionFactory factory;
+	private SessionFactory factory;
 	protected Session session;
 
 	protected void begin() {
@@ -24,8 +24,16 @@ public class GenericDao {
 			session.getTransaction().rollback();
 		}
 	}
-	
-	public GenericDao() {
+
+  public GenericDao() {
 		this.factory = HibernateProvider.getSessionFactory();
 	}
+
+  public SessionFactory getFactory() {
+    return factory;
+  }
+
+  public void setFactory(SessionFactory factory) {
+    this.factory = factory;
+  }
 }

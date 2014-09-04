@@ -7,7 +7,7 @@ import org.hibernate.Query;
 import ru.gooamoko.model.Department;
 
 public class DepartmentDao extends GenericDao {
-
+  
   @SuppressWarnings("unchecked")
   public List<Department> fetchAll() {
     begin();
