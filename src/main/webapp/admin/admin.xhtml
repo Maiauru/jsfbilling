@@ -2,13 +2,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:h="http://java.sun.com/jsf/html">
 
   <ui:composition template="/WEB-INF/templates/main.xhtml">
     <ui:define name="content">
-      <!-- Отображение списка групп и узлов -->
       <h:panelGroup layout="block" rendered="#{adminBean.show}">
+        <!-- List of hosts and groups -->
         <h1>Панель управления</h1>
         <h:form>
           <div class="buttons"><h:commandButton value="Добавить группу" action="#{adminBean.addGroup()}" /></div>
@@ -49,7 +48,7 @@
                         #{host.monthMBytes} МБайт
                       </td>
                       <td align="right">
-                        --
+                        #{host.speed} КБайт/с
                       </td>
                       <td>
                         <h:commandLink class="action" value="Изменить" action="#{adminBean.editHost(host)}" />
@@ -69,8 +68,8 @@
           <div class="buttons"><h:commandButton value="Добавить группу" action="#{adminBean.addGroup()}" /></div>
         </h:form>
       </h:panelGroup>
-      <!-- Балланс группы -->
       <h:panelGroup layout="block" rendered="#{adminBean.ballanceGroup}">
+        <!-- Group ballance -->
         <h1>Балланс группы</h1>
         <h:form>
           <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
@@ -83,8 +82,8 @@
           </div>
         </h:form>
       </h:panelGroup>
-      <!-- Балланс узла -->
       <h:panelGroup layout="block" rendered="#{adminBean.ballanceHost}">
+        <!-- Host ballance -->
         <h1>Балланс узла</h1>
         <h:form>
           <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
@@ -97,8 +96,8 @@
           </div>
         </h:form>
       </h:panelGroup>
-      <!-- Редактирование группы -->
       <h:panelGroup layout="block" rendered="#{adminBean.editGroup}">
+        <!-- Edit Group -->
         <h1>Параметры подразделения</h1>
         <h:form>
           <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
@@ -111,8 +110,8 @@
           </div>
         </h:form>
       </h:panelGroup>
-      <!-- Редактирование узла -->
       <h:panelGroup layout="block" rendered="#{adminBean.editHost}">
+        <!-- Edit host -->
         <h1>Параметры компьютера</h1>
         <h:form>
           <h:panelGrid columns="2" columnClasses="formlabel" width="60%">
@@ -133,14 +132,26 @@
           </div>
         </h:form>
       </h:panelGroup>
-      <!-- Удаление -->
       <h:panelGroup layout="block" rendered="#{adminBean.deleteGroup}">
+        <!-- Delete department -->
         <h1>Удаление группы</h1>
         <h:form>
           <p>Группа "#{adminBean.group.name}" Будет удалена.</p>
           <p>#{main['application.delete.warning']}</p>
           <div id="buttons">
             <h:commandButton value="Удалить" action="#{adminBean.deleteGroup()}" />
+            <h:commandButton value="Отменить" action="#{adminBean.cancel()}" />
+          </div>
+        </h:form>
+      </h:panelGroup>
+      <h:panelGroup layout="block" rendered="#{adminBean.deleteHost}">
+        <!-- Delete host -->
+        <h1>Удаление компьютера</h1>
+        <h:form>
+          <p>Компьютер "#{adminBean.group.name}" Будет удален.</p>
+          <p>#{main['application.delete.warning']}</p>
+          <div id="buttons">
+            <h:commandButton value="Удалить" action="#{adminBean.deleteHost()}" />
             <h:commandButton value="Отменить" action="#{adminBean.cancel()}" />
           </div>
         </h:form>
