@@ -6,7 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-public class HibernateProvider {
+public abstract class HibernateProvider {
 
   private static final SessionFactory factory = buildFactory();
 
