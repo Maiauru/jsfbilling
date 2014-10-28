@@ -2,19 +2,19 @@ package ru.gooamoko.beans;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import ru.gooamoko.dao.DaoException;
-import ru.gooamoko.dao.HostDao;
+import ru.gooamoko.ejb.DaoException;
+import ru.gooamoko.ejb.HostEJB;
 import ru.gooamoko.model.Host;
 
 public class ClientUtils {
 
-  private final HostDao hostDao;
+  private final HostEJB hostDao;
   private String clientAddress;
   private Host clientHost;
   private boolean unknown = false;
 
   public ClientUtils() {
-    hostDao = new HostDao();
+    hostDao = new HostEJB();
     FacesContext context = FacesContext.getCurrentInstance();
     HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
     clientAddress = request.getRemoteHost();
