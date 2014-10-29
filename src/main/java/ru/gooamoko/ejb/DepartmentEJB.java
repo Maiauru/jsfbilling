@@ -65,7 +65,7 @@ public class DepartmentEJB {
 
   public void setBallance(Department item, float ballance) throws DaoException {
     try {
-      Query query = em.createNativeQuery("UPDATE hosts SET hst_ballance=:ballance WHERE (hst_depcode=:depcode)");
+      Query query = em.createQuery("UPDATE Host h SET h.ballance = :ballance WHERE (h.departmentId = :depcode)");
       query.setParameter("ballance", ballance);
       query.setParameter("depcode", item.getId());
       query.executeUpdate();

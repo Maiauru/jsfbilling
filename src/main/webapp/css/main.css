@@ -75,6 +75,7 @@ p {
 }
 
 #footer {
+  top: 20px;
   clear:both; /*No floating elements are allowed on left or right*/
   text-align:center;
 }
@@ -112,6 +113,7 @@ div#error {
 }
 
 div.buttons {
+  display: block;
   margin-top: 10px;
   margin-bottom: 20px;
   margin-left: 50px;

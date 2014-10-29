@@ -71,7 +71,11 @@ public class HostEJB {
 
   public void save(Host item) throws DaoException {
     try {
-      em.persist(item);
+      if (item.getId() == 0) {
+        em.persist(item);
+      } else {
+        em.merge(item);
+      }
     } catch (Exception e) {
       throw new DaoException(e);
     }
