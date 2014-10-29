@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name="hosts")
@@ -43,15 +42,17 @@ public class Host implements Serializable {
 	private boolean steel;
   
   // Трафик за день
-  @Formula("(select day_traffic(hst_pcode))")
-  private float dayKBytes;
+  //@Formula("(select day_traffic(hst_pcode))")
+  @Column( name="(select day_traffic(hst_pcode)) AS dayKBytes", insertable = false, updatable = false)
+  private transient float dayKBytes;
   // Трафик за месяц
-  @Formula("(select month_traffic(hst_pcode))")
-  private float monthMBytes;
+  //@Formula("(select month_traffic(hst_pcode))")
+  @Column( name="(select month_traffic(hst_pcode)) AS monthMBytes", insertable = false, updatable = false)
+  private transient float monthMBytes;
   
   // Скорость в килобайтах в минуту
-  @Formula("(select get_speed(hst_pcode))")
-  private float speed;
+  //@Formula("(select get_speed(hst_pcode))")
+  private transient float speed;
   
 	public int getId() {
 		return id;

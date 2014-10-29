@@ -80,11 +80,33 @@ p {
 }
 
 div#success {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  display: block;
+  top: 10px;
+  left: 0;
+  bottom: 20px;
+  padding: 5px;
+  margin: 0px 0px 20px 0px;
+  width: 100%;	
   border-color: #59d959;
   background-color: #79f979;
 }
 
 div#error {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  display: block;
+  top: 10px;
+  left: 0;
+  bottom: 20px;
+  padding: 5px;
+  margin: 0px 0px 20px 0px;
+  width: 100%;	
   border-color: #d95959;
   background-color: #f97979;
 }

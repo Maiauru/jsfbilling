@@ -5,13 +5,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
-import org.hibernate.Query;
-
 import ru.gooamoko.model.Traffic;
 
 @Stateless
-public class TrafficDao {
+public class TrafficEJB {
   
   @PersistenceContext(unitName="netstatPU")
   EntityManager em;

@@ -6,6 +6,13 @@
 
   <ui:composition template="/WEB-INF/templates/main.xhtml">
     <ui:define name="content">
+      <h:panelGroup layout="block" rendered="#{adminBean.error}">
+        <div id="error">
+          <h2>Ошибка</h2>
+          <p>В процессе обработки вашего запроса произошла ошибка!</p>
+          <p>#{adminBean.errorMessage}</p>
+        </div>
+      </h:panelGroup>
       <h:panelGroup layout="block" rendered="#{adminBean.show}">
         <!-- List of hosts and groups -->
         <h1>Панель управления</h1>
