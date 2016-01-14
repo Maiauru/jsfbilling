@@ -20,6 +20,25 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+         <groupId>org.liquibase</groupId>
+         <artifactId>liquibase-maven-plugin</artifactId>
+         <version>3.3.2</version>
+         <configuration>
+           <propertyFile>liquibase.properties</propertyFile>
+           <propertyFileWillOverride>true</propertyFileWillOverride>
+           <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+           <changeLogFile>sql/liquibase/master.xml</changeLogFile>
+         </configuration>
+         <executions>
+           <execution>
+             <phase>process-resources</phase>
+               <goals>
+                 <goal>update</goal>
+               </goals>
+           </execution>
+         </executions>
+       </plugin>
     </plugins>
   </build>
 
@@ -30,7 +49,12 @@
       <version>7.0</version>
       <scope>provided</scope>
     </dependency>
-
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.0-801.jdbc4</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
